@@ -1,34 +1,57 @@
 // TextBuddy2.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
-#include <iostream>
-#include <string>
-#include <vector>
+#include "Data.h"
 
-static const std::string MESSAGE_WELCOME = "Welcome to TextBuddy 2!";
-static const std::string MESSAGE_ERROR = "TextBuddy does not understand the command ";
+void engageUser(Data &textFile);
+void executeUserCommand(Commands command, Data &textFile);
 
-static const int EXPECTED_ARG_NUMBER = 2;
-static const int POSITION_FILENAME = 1;
-
-bool isFileSpecified(int n);
-std::string getFileName();
-
-int main(int argc, char* argv[])
-{
-	std::string fileName;
-	std::vector<std::string> data;
-
-	while(!isFileSpecified){
-	
+int main(int argc, char* argv[]){
+	std::string fileName = confirmFile(argc, argv);
+	printMessage(MESSAGE_WELCOME);
+	Data textFile(fileName);
+	engageUser(textFile);
 	return 0;
 }
 
-bool isFileSpecified(int n){
-	return n == EXPECTED_ARG_NUMBER;
+void engageUser(Data &textFile){
+	std::map<std::string, Commands> commandMap = setupMap();
+	std::string command = "";
+	while(command!=USER_COMMAND_EXIT){
+		command = prompt("command");
+		executeUserCommand(commandMap[command], textFile);
+	}
 }
 
-std::string getFileName(){
+void executeUserCommand(Commands command, Data &textFile){
+	std::string line;
+	int lineNum;
+	switch(command){
+		case ADD :
+			std::cin >> line;
+			textFile.add(line);
+			break;
 
+		case DELETE :
+			std::cin >> lineNum;
+			textFile.del(lineNum);
+			break;
+
+		case CLEAR :
+			textFile.clear();
+			break;
+
+		case DISPLAY:
+			textFile.display();
+			break;
+
+		case EXIT:
+			NULL; // no need to take action
+			break;
+
+		default :
+			getline(std::cin, line); // clears the extra line leftover from the wrong command
+			printErrorMessage("Command not recognised");
+	}
+	textFile.saveFile();
 }
