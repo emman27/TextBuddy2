@@ -21,13 +21,15 @@ public:
 	void saveFile();
 	
 	std::string getFileName();
+	std::string get(int lineNum);
+	int getSize();
+	std::vector<std::string> getAll();
 
 	void add(std::string line);
-	std::string get(int lineNum);
 	void del(unsigned int lineNum);
 	void clear();
 	void display();
-	void search(std::string toFind);
+	SearchResult search(std::string toFind);
 	void sort();
 };
 

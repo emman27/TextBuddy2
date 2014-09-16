@@ -18,3 +18,7 @@ void SearchResult::display(){
 		printMessage(lines[i]);
 	}
 }
+
+std::vector<std::string> SearchResult::getAll(){
+	return lines;
+}

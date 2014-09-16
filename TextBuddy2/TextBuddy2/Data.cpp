@@ -34,6 +34,18 @@ std::string Data::getFileName(){
 	return fileName;
 }
 
+std::string Data::get(int lineNum){
+	return lines[lineNum - 1];
+}
+
+int Data::getSize(){
+	return lines.size();
+}
+
+std::vector<std::string> Data::getAll(){
+	return lines;
+}
+
 void Data::add(std::string line){
 	lines.push_back(line);
 	printMessage("Added to " + fileName +": " + line);
@@ -60,7 +72,7 @@ void Data::display(){
 	}
 }
 
-void Data::search(std::string toFind){
+SearchResult Data::search(std::string toFind){
 	SearchResult searchResults;
 	for(unsigned int i = 0; i < lines.size(); i++){
 		if(isInString(lines[i], toFind)){
@@ -71,6 +83,7 @@ void Data::search(std::string toFind){
 	}
 	printMessage("Search results: ");
 	searchResults.display();
+	return searchResults;
 }
 
 void Data::sort(){

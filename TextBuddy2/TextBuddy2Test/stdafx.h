@@ -12,3 +12,5 @@
 #include "Data.h"
 
 // TODO: reference additional headers your program requires here
+
+const std::string TEST_FILE_NAME = "something.txt";

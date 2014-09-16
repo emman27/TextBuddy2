@@ -11,5 +11,6 @@ public:
 	~SearchResult();
 	void add(std::string line);
 	void display();
+	std::vector<std::string> getAll();
 };
 
