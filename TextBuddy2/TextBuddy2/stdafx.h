@@ -22,7 +22,9 @@ enum Commands{
 	DELETE = 2,
 	CLEAR = 3,
 	DISPLAY = 4,
-	EXIT = 5
+	SEARCH = 5,
+	SORT = 6,
+	EXIT = 7
 };
 
 static const std::string MESSAGE_WELCOME = "Welcome to TextBuddy 2!";
@@ -37,6 +39,8 @@ static const std::string USER_COMMAND_ADD = "add";
 static const std::string USER_COMMAND_DELETE = "delete";
 static const std::string USER_COMMAND_CLEAR = "clear";
 static const std::string USER_COMMAND_DISPLAY = "display";
+static const std::string USER_COMMAND_SEARCH = "search";
+static const std::string USER_COMMAND_SORT = "sort";
 static const std::string USER_COMMAND_EXIT = "exit";
 
 bool isFileSpecified(int n);
@@ -50,5 +54,7 @@ void printErrorMessage(std::string msg);
 std::string confirmFile(int i, char* argv[]);
 
 std::map<std::string, Commands> setupMap();
+
+bool isInString(std::string string, std::string substring);
 
 

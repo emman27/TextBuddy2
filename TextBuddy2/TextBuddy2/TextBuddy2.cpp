@@ -25,7 +25,7 @@ void engageUser(Data &textFile){
 
 void executeUserCommand(Commands command, Data &textFile){
 	std::string line;
-	int lineNum;
+	unsigned int lineNum;
 	switch(command){
 		case ADD :
 			std::cin >> line;
@@ -43,6 +43,15 @@ void executeUserCommand(Commands command, Data &textFile){
 
 		case DISPLAY:
 			textFile.display();
+			break;
+
+		case SEARCH:
+			std::cin >> line;
+			textFile.search(line);
+			break;
+
+		case SORT:
+			textFile.sort();
 			break;
 
 		case EXIT:

@@ -67,6 +67,12 @@ std::map<std::string, Commands> setupMap(){
 	commandMap[USER_COMMAND_DELETE] = DELETE;
 	commandMap[USER_COMMAND_CLEAR] = CLEAR;
 	commandMap[USER_COMMAND_DISPLAY] = DISPLAY;
+	commandMap[USER_COMMAND_SEARCH] = SEARCH;
+	commandMap[USER_COMMAND_SORT] = SORT;
 	commandMap[USER_COMMAND_EXIT] = EXIT;
 	return commandMap;
 };
+
+bool isInString(std::string string, std::string substring){
+	return string.find(substring) == string.npos;
+}

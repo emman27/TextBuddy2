@@ -1,5 +1,8 @@
 #include "Data.h"
 
+Data::Data(){
+}
+
 Data::Data(std::string fileTitle){
 	fileName = fileTitle;
 	readFile();
@@ -27,12 +30,16 @@ void Data::saveFile(){
 	file.close();
 }
 
+std::string Data::getFileName(){
+	return fileName;
+}
+
 void Data::add(std::string line){
 	lines.push_back(line);
 	printMessage("Added to " + fileName +": " + line);
 }
 
-void Data::del(int lineNum){
+void Data::del(unsigned int lineNum){
 	if(lineNum > lines.size() || lineNum <= 0){
 		printErrorMessage("Invalid input");
 	}
@@ -53,6 +60,18 @@ void Data::display(){
 	}
 }
 
-std::string search(std::string toFind);
+void Data::search(std::string toFind){
+	SearchResult searchResults;
+	for(unsigned int i = 0; i < lines.size(); i++){
+		if(isInString(lines[i], toFind)){
+			std::string line = i + ". " + lines[i];
+			searchResults.add(line);
+		}
+	}
+	printMessage("Search results: ");
+	searchResults.display();
+}
 
-void sort();
+void Data::sort(){
+
+}

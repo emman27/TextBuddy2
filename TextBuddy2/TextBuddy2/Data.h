@@ -2,27 +2,30 @@
 
 #include <fstream>
 #include "stdafx.h"
+#include "SearchResult.h"
 
 class Data{
 
-private:
+protected:
 	std::vector<std::string> lines;
 	std::string fileName;
 
 public:
+	Data();
 	Data(std::string fileTitle);
 	~Data(void);
 	
 	void readFile();
 	void saveFile();
 	
+	std::string getFileName();
+
 	void add(std::string line);
 	std::string get(int lineNum);
-	void del(int lineNum);
+	void del(unsigned int lineNum);
 	void clear();
 	void display();
-
-	std::string search(std::string toFind);
+	void search(std::string toFind);
 	void sort();
 };
 
