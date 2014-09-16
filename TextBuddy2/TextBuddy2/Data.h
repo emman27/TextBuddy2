@@ -3,6 +3,8 @@
 #include <fstream>
 #include "stdafx.h"
 #include "SearchResult.h"
+#include <algorithm>
+#include <sstream>
 
 class Data{
 

@@ -33,7 +33,7 @@ bool isFileSpecified(int n){
 }
 
 std::string getFileName(){
-	return prompt("Please enter a filename");
+	return promptMultipleWords("Please enter a filename");
 }
 
 std::string prompt(std::string msg){
@@ -42,6 +42,14 @@ std::string prompt(std::string msg){
 	std::cin >> s;
 	return s;
 }
+
+std::string promptMultipleWords(std::string msg){
+	std::string s;
+	std::cout << msg << ": ";
+	getline(std::cin, s);
+	return s;
+}
+
 
 void printMessage(std::string msg){
 	std::cout << msg << std::endl;
@@ -74,5 +82,5 @@ std::map<std::string, Commands> setupMap(){
 };
 
 bool isInString(std::string string, std::string substring){
-	return string.find(substring) == string.npos;
+	return string.find(substring) != string.npos;
 }

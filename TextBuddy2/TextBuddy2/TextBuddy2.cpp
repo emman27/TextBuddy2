@@ -28,7 +28,8 @@ void executeUserCommand(Commands command, Data &textFile){
 	unsigned int lineNum;
 	switch(command){
 		case ADD :
-			std::cin >> line;
+			std::cin.ignore();
+			getline(std::cin, line);
 			textFile.add(line);
 			break;
 
@@ -41,12 +42,13 @@ void executeUserCommand(Commands command, Data &textFile){
 			textFile.clear();
 			break;
 
-		case DISPLAY:
+		case DISPLAY :
 			textFile.display();
 			break;
 
-		case SEARCH:
-			std::cin >> line;
+		case SEARCH :
+			std::cin.ignore();
+			getline(std::cin, line);
 			textFile.search(line);
 			break;
 

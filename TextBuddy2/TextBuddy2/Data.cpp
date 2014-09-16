@@ -44,7 +44,7 @@ void Data::del(unsigned int lineNum){
 		printErrorMessage("Invalid input");
 	}
 	else{
-		printMessage("Removed from " + fileName +": " + lines[lineNum]);
+		printMessage("Removed from " + fileName +": " + lines[lineNum - 1]);
 		lines.erase(lines.begin() + lineNum - 1);
 	}
 }
@@ -64,8 +64,9 @@ void Data::search(std::string toFind){
 	SearchResult searchResults;
 	for(unsigned int i = 0; i < lines.size(); i++){
 		if(isInString(lines[i], toFind)){
-			std::string line = i + ". " + lines[i];
-			searchResults.add(line);
+			std::stringstream line;
+			line << i+1 << ". " << lines[i];
+			searchResults.add(line.str());
 		}
 	}
 	printMessage("Search results: ");
@@ -73,5 +74,6 @@ void Data::search(std::string toFind){
 }
 
 void Data::sort(){
-
+	std::sort(lines.begin(), lines.end());
+	printMessage(fileName + " has been sorted.");
 }

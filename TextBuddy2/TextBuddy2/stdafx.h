@@ -48,6 +48,7 @@ std::string getFileName();
 bool isLegit(std::string filename);
 
 std::string prompt(std::string msg);
+std::string promptMultipleWords(std::string msg);
 void printMessage(std::string msg);
 void printErrorMessage(std::string msg);
 
