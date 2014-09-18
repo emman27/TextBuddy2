@@ -28,8 +28,8 @@ void executeUserCommand(Commands command, Data &textFile){
 	unsigned int lineNum;
 	switch(command){
 		case ADD :
-			std::cin.ignore();
-			getline(std::cin, line);
+			std::cin.ignore(); //need to get rid of weird characters from input
+			getline(std::cin, line); //then read the rest of the things that were meant to be added
 			textFile.add(line);
 			break;
 

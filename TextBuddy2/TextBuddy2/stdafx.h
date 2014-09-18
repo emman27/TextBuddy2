@@ -43,6 +43,7 @@ static const std::string USER_COMMAND_SEARCH = "search";
 static const std::string USER_COMMAND_SORT = "sort";
 static const std::string USER_COMMAND_EXIT = "exit";
 
+std::string confirmFile(int i, char* argv[]);
 bool isFileSpecified(int n);
 std::string getFileName();
 bool isLegit(std::string filename);
@@ -52,7 +53,6 @@ std::string promptMultipleWords(std::string msg);
 void printMessage(std::string msg);
 void printErrorMessage(std::string msg);
 
-std::string confirmFile(int i, char* argv[]);
 
 std::map<std::string, Commands> setupMap();
 
